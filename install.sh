@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 echo "Starting Dotfiles Deployment: $(date +'%Y-%m-%d %H:%M:%S')"
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 

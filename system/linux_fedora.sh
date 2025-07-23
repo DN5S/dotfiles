@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 echo "Phase 1: Installing prerequisites for Fedora..."
 
 # 시스템 최신화 및 필수 도구 설치

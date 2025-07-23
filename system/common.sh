@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 echo "Running common setup..."
 if [ -d "${ZDOTDIR:-~}/.antidote" ]; then
     echo "Antidote found. Updating..."
