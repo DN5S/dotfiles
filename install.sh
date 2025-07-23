@@ -23,8 +23,6 @@ for dir in "$DOTFILES_DIR"/config/*; do
         stow -R --verbose --target="$HOME" --dir="$DOTFILES_DIR/config" "$stow_pkg"
     fi
 done
-ln -sf "$DOTFILES_DIR/config/zsh/plugins.txt" "$HOME/.zsh_plugins.txt"
-echo "Stowing zsh_plugins.txt..."
 
 echo ""
 echo "Deployment finished at $(date +'%Y-%m-%d %H:%M:%S') Restart your shell or log back in."

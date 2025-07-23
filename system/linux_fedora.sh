@@ -4,7 +4,7 @@ echo "Phase 1: Installing prerequisites for Fedora..."
 # Update system and install necessary packages
 echo "Updating system and installing required packages..."
 sudo dnf update -y
-sudo dnf group install "development-tools"
+sudo dnf group install -y "development-tools" 
 sudo dnf install -y git zsh stow fzf
 sudo dnf autoremove -y
 
