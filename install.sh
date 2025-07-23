@@ -20,6 +20,7 @@ for dir in "$DOTFILES_DIR"/config/*; do
         # --dir 플래그는 stow를 실행하는 위치를 기준으로 하므로 한 단계 위를 지정
         stow --verbose --target="$HOME" --dir="$DOTFILES_DIR/config" "$stow_pkg"
     }
+    fi
 done
 
 echo ""
