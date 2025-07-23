@@ -1,4 +1,4 @@
-﻿# config/zsh/conf.d/10-plugins.zsh
+# config/zsh/conf.d/10-plugins.zsh
 
 # Define a path for generated plugin files
 ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"

@@ -10,10 +10,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ------------------------------------------------------------------------------
-#  Load all configuration files from conf.d
+#  Load all configuration files from the .zsh/conf.d directory
 #  - Files are loaded in alphabetical order.
 # ------------------------------------------------------------------------------
-ZSH_CONFIG_DIR="${ZDOTDIR:-$HOME}/.config/zsh" # Or your stow location
+ZSH_CONFIG_DIR="$HOME/.zsh"
 if [ -d "$ZSH_CONFIG_DIR/conf.d" ]; then
   for config_file in "$ZSH_CONFIG_DIR"/conf.d/*.zsh; do
     source "$config_file"

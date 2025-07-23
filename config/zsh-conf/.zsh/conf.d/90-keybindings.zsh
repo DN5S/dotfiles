@@ -1,4 +1,4 @@
-﻿# config/zsh/conf.d/90-keybindings.zsh
+# config/zsh/conf.d/90-keybindings.zsh
 
 # fzf keybindings
 source <(fzf --zsh)
