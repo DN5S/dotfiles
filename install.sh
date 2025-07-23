@@ -13,13 +13,10 @@ source "$DOTFILES_DIR/system/common.sh"
 echo "Creating symbolic links with Stow..."
 # config/ 디렉토리 안의 모든 폴더에 대해 stow를 실행
 for dir in "$DOTFILES_DIR"/config/*; do
-    if [ -d "$dir" ]; {
-        # 폴더 이름만 추출 (예: zsh, p10k)
+    if [ -d "$dir" ]; then
         stow_pkg=$(basename "$dir")
         echo "Stowing $stow_pkg..."
-        # --dir 플래그는 stow를 실행하는 위치를 기준으로 하므로 한 단계 위를 지정
         stow --verbose --target="$HOME" --dir="$DOTFILES_DIR/config" "$stow_pkg"
-    }
     fi
 done
 
