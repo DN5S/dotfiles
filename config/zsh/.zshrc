@@ -21,3 +21,7 @@ source "$GENERATED_PLUGINS_FILE"
 
 # Initialize Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Enable history substring search
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down 
