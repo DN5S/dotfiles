@@ -21,6 +21,8 @@ source "$GENERATED_PLUGINS_FILE"
 
 # Initialize Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Load fzf for fuzzy finding capabilities
+source <(fzf --zsh)
 
 # Enable history substring search
 bindkey "^[[A" history-substring-search-up
