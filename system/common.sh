@@ -1,5 +1,7 @@
 #!/bin/bash
+
 echo "Running common setup..."
+# Ensure Antidote is installed for Zsh plugin management 
 if [ -d "${ZDOTDIR:-~}/.antidote" ]; then
     echo "Antidote found. Updating..."
     (cd "${ZDOTDIR:-~}/.antidote" && git pull)
