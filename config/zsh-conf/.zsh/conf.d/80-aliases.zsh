@@ -91,3 +91,6 @@ alias free='free -h'
 #  Miscellaneous
 # ------------------------------------------------------------------------------
 alias reload='source ~/.zshrc'
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
