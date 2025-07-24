@@ -85,11 +85,9 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias h='history'
 alias c='clear'
-du() {
-    local depth="${1:-1}"
-    command du -h --max-depth="$depth"
-}
 alias du='du -h --max-depth=1'
+alias df='df -h'
+alias free='free -h'
 
 # ------------------------------------------------------------------------------
 #  Miscellaneous
