@@ -5,8 +5,8 @@
 # ------------------------------------------------------------------------------
 alias ls='eza --icons'
 alias l='eza --icons -bgh --git'
-alias la='eza --icons -a'
-alias ll='eza --icons -l --git --no-user --no-time'
+alias la='eza --icons -al --git'
+alias ll='eza --icons -l --git'
 alias lt='eza --icons --tree --level=2'
 
 # ------------------------------------------------------------------------------
