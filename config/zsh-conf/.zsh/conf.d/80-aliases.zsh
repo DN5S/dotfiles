@@ -59,19 +59,17 @@ sys-update() {
 }
 
 # ------------------------------------------------------------------------------
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gp='git push'
 alias g='git'
 alias ga='git add'
-alias gc='git commit -m'
 alias gp='git push'
+alias gpl='git pull'
+alias gc='git commit'
+alias gcm='git commit -m'
 alias gst='git status'
 alias gl='git log --oneline --graph --decorate'
 alias gd='git diff'
 alias gco='git checkout'
 alias gbr='git branch'
-alias gpl='git pull'
 alias gcl='git clone'
 
 # ------------------------------------------------------------------------------
