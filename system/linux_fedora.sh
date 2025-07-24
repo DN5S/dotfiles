@@ -53,6 +53,14 @@ else
   echo "Atuin is already installed."
 fi
 
+# Install uv (The extremely fast Python installer and resolver)
+if ! command -v uv &> /dev/null; then
+  echo "uv not found. Installing from the official setup script..."
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+else
+  echo "uv is already installed."
+fi
+
 ZSH_PATH=$(which zsh)
 
 # Check if Zsh is already the default shell
