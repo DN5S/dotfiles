@@ -7,12 +7,16 @@ GENERATED_PLUGINS_FILE="$ZSH_CACHE_DIR/plugins.zsh"
 PLUGINS_LIST_FILE="$HOME/.zsh_plugins.txt"
 
 # Load Antidote
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+source "${ZDOTDIR:-$HOME}/.antidote/antidote.zsh"
 
 # Regenerate the plugins file only if it doesn't exist or the source list is newer.
 if [[ ! -f "$GENERATED_PLUGINS_FILE" || "$PLUGINS_LIST_FILE" -nt "$GENERATED_PLUGINS_FILE" ]]; then
-    echo "Antidote: Generating new plugins file..."
-    antidote bundle <"$PLUGINS_LIST_FILE" >"$GENERATED_PLUGINS_FILE"
+    echo "[antidote] Generating new plugins file..."
+    if [[ -f "$PLUGINS_LIST_FILE" ]]; then
+        antidote bundle <"$PLUGINS_LIST_FILE" >"$GENERATED_PLUGINS_FILE"
+    else
+        echo "Warning: $PLUGINS_LIST_FILE does not exist. Plugins file not generated."
+    fi
 fi
 
 # Source the generated plugins file

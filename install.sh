@@ -9,10 +9,18 @@ echo "Starting Dotfiles Deployment: $(date +'%Y-%m-%d %H:%M:%S')"
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Source the system-specific setup script for Fedora
-source "$DOTFILES_DIR/system/linux_fedora.sh"
+if [ -f "$DOTFILES_DIR/system/linux_fedora.sh" ]; then
+    source "$DOTFILES_DIR/system/linux_fedora.sh"
+else
+    echo "Warning: $DOTFILES_DIR/system/linux_fedora.sh not found. Skipping Fedora-specific setup."
+fi
 
 # Source the common setup script for shared configurations
-source "$DOTFILES_DIR/system/common.sh"
+if [ -f "$DOTFILES_DIR/system/common.sh" ]; then
+    source "$DOTFILES_DIR/system/common.sh"
+else
+    echo "Warning: $DOTFILES_DIR/system/common.sh not found. Skipping common setup."
+fi
 
 # Create the .zsh_plugins.txt file if it doesn't exist
 echo "Creating symbolic links with Stow..."

@@ -20,10 +20,19 @@ if ! command -v eza &> /dev/null; then
 
   echo "Extracting binary..."
   tar -xzf eza_x86_64-unknown-linux-gnu.tar.gz
-  
+
+  # Find the eza binary after extraction
+  EZA_BIN=$(find . -type f -name "eza" | head -n 1)
+  if [ -z "$EZA_BIN" ]; then
+    echo "eza binary not found after extraction."
+    cd -
+    rm -rf "$TEMP_DIR"
+    exit 1
+  fi
+
   # Move the binary to /usr/local/bin
   echo "Installing eza to /usr/local/bin..."
-  sudo mv eza /usr/local/bin/eza
+  sudo mv "$EZA_BIN" /usr/local/bin/eza
 
   # Clean up temporary files
   cd -
@@ -33,6 +42,18 @@ else
   echo "eza is already installed."
 fi
 
+# Install Atuin
+# As this is a more reliable method than checking for the command in the PATH.
+ATUIN_INSTALL_DIR="$HOME/.atuin/bin"
+if [ ! -d "$ATUIN_INSTALL_DIR" ]; then
+  echo "Atuin not found in $HOME/.atuin. Installing from official script..."
+  # The script should be run as the user, not sudo, to install in the user's home directory.
+if [ "$SHELL" = "$ZSH_PATH" ]; then
+  echo "Zsh is already the default shell."
+else
+  echo "Atuin is already installed."
+fi
+
 ZSH_PATH=$(which zsh)
 
 # Check if Zsh is already the default shell
@@ -40,13 +61,15 @@ if [ "$SHELL" == "$ZSH_PATH" ]; then
   echo "Zsh is already the default shell."
 else
   # Verify that the zsh path is valid and listed in /etc/shells
-  if ! grep -q "$ZSH_PATH" /etc/shells; then
+  if ! grep -Fxq "$ZSH_PATH" /etc/shells; then
     echo "Adding $ZSH_PATH to /etc/shells"
     echo "$ZSH_PATH" | sudo tee -a /etc/shells
+  else
+    echo "$ZSH_PATH already exists in /etc/shells, skipping addition."
   fi
 
   # Ask for confirmation before changing the shell
-  read -p "Do you want to change the default shell to Zsh for user $USER? (y/N) " -n 1 -r
+  read -p "Do you want to change the default shell to Zsh for user $USER? [y/N] (default: N): " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Changing shell to Zsh for the current user ($USER)..."

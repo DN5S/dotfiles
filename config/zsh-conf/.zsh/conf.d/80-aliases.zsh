@@ -12,6 +12,10 @@ alias lt='eza --icons --tree --level=2'
 # ------------------------------------------------------------------------------
 #  GNU Stow (Symlink Manager)
 #  - Requires running from within the dotfiles directory.
+#  - Usage:
+#      st                # Stow all packages in $HOME/.dotfiles/config
+#      st zsh-conf       # Stow only the 'zsh-conf' package
+#  - This function wraps 'stow' for easier dotfiles management.
 # ------------------------------------------------------------------------------
 st() {
     local stow_dir="$HOME/.dotfiles/config"
@@ -28,26 +32,26 @@ st() {
     fi
 }
 
-# ------------------------------------------------------------------------------
-#  System Update and Maintenance
-#  - A comprehensive function to update, clean, and optimize the system.
-# ------------------------------------------------------------------------------
 sys-update() {
+    # 1. 시스템 패키지 업데이트
     if ! sudo dnf update -y; then
         echo "Error during package update. Aborting." >&2
         return 1
     fi
 
+    # 2. 더 이상 필요 없는 패키지 자동 제거
     if ! sudo dnf autoremove -y; then
         echo "Error during autoremove. Aborting." >&2
         return 1
     fi
 
+    # 3. DNF 캐시 정리
     if ! sudo dnf clean all; then
         echo "Error during cache cleanup." >&2
         return 1
     fi
 
+    # 4. 시스템 로그(journal) 2주 이전 데이터 삭제
     if ! sudo journalctl --vacuum-time=2weeks; then
         echo "Error during journal log vacuuming." >&2
         return 1
@@ -55,8 +59,9 @@ sys-update() {
 }
 
 # ------------------------------------------------------------------------------
-#  Git
-# ------------------------------------------------------------------------------
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gp='git push'
 alias g='git'
 alias ga='git add'
 alias gc='git commit -m'
@@ -80,7 +85,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias h='history'
 alias c='clear'
-alias df='df -h'
+du() {
+    local depth="${1:-1}"
+    command du -h --max-depth="$depth"
+}
 alias du='du -h --max-depth=1'
 
 # ------------------------------------------------------------------------------

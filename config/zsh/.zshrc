@@ -26,3 +26,7 @@ fi
 #  - Must be at the bottom.
 # ------------------------------------------------------------------------------
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
