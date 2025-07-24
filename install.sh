@@ -5,6 +5,11 @@
 # and creates symbolic links for configuration files using Stow.
 # Ensure the script is run from the dotfiles directory
 
+if ! (cd "$SCRIPT_DIR" && git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+    echo "Error: This script must be run from within the dotfiles Git repository." >&2
+    exit 1
+fi
+
 echo "Starting Dotfiles Deployment: $(date +'%Y-%m-%d %H:%M:%S')"
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
