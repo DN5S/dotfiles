@@ -5,7 +5,7 @@ echo "Phase 1: Installing prerequisites for Fedora..."
 echo "Updating system and installing required packages..."
 sudo dnf update -y
 sudo dnf group install -y "development-tools" 
-sudo dnf install -y wget zsh stow fzf ripgrep bat
+sudo dnf install -y wget zsh stow fzf ripgrep bat gh git-delta
 sudo dnf autoremove -y
 
 # Install eza

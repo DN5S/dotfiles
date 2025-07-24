@@ -58,6 +58,7 @@ STOW_PACKAGES=(
     p10k
     zsh
     zsh-conf
+    git
 )
 
 for pkg in "${STOW_PACKAGES[@]}"; do

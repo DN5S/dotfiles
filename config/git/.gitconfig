@@ -1,0 +1,35 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = me@dn5s.dev
+	name = DN5S
+
+[core]
+	fileMode = false
+	autocrlf = input
+	pager = delta
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[rebase]
+	autoStash = true
+
+[color]
+	ui = true
+
+[diff]
+	algorithm = patience
+	colorMoved = default
+
+[delta]
+	navigate = true
+	light = false
+	side-by-side = true
