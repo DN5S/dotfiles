@@ -4,8 +4,14 @@
 
 * **Shell**: [`zsh`](https://www.zsh.org/)
 * **Prompt**: [`Powerlevel10k`](https://github.com/romkatv/powerlevel10k)
-* **Plugin Manager**: [`Antidote`](https://antidote.sh/)
 * **Symlink  Manager**: [`GNU Stow`](https://www.gnu.org/software/stow/)
+* **Plugin Manager**: [`Antidote`](https://antidote.sh/)
+* **Terminal Tools**:
+   * [`eza`](https://github.com/eza-community/eza)
+   * [`fzf`](https://github.com/junegunn/fzf)
+   * [`ripgrep`](https://github.com/BurntSushi/ripgrep)
+   * [`bat`](https://github.com/sharkdp/bat)
+   * [`atuin`](https://atuin.sh/)
 * **Plugins**:
     * [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions)
     * [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting)
