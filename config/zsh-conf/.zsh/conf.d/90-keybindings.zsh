@@ -12,7 +12,7 @@ export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
 # ------------------------------------------------------------------------------
 #  Keybindings
 # ------------------------------------------------------------------------------
-# fzf keybindings (fzf가 export된 변수들을 읽어서 자동으로 적용함)
+# fzf keybindings
 source <(fzf --zsh)
 
 # zsh-history-substring-search keybindings
