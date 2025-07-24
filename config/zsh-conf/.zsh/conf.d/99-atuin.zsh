@@ -15,8 +15,6 @@ eval "$(atuin init zsh)"
 
 autoload -U add-zsh-hook
 atuin_sync_on_exit() {
-  # Run a final sync. No need for backgrounding as the shell is closing.
-  # A timeout is added to prevent hanging on a slow network.
-  atuin sync --timeout 10
+  atuin sync
 }
 add-zsh-hook zshexit atuin_sync_on_exit
