@@ -23,12 +23,12 @@ st() {
     
     # If no arguments are provided, find all directories in stow_dir and use them as packages
     if [ $# -eq 0 ]; then
-        # Use a subshell to change directory and find packages
+        # Use a subshell to change directory. Added '--' to prevent misinterpretation of filenames.
         (cd "$stow_dir" && \
-         command stow -R --verbose --target="$target_dir" --dir="$stow_dir" *)
+         command stow -R --verbose --target="$target_dir" --dir="$stow_dir" -- *)
     else
-        # Pass all provided arguments to stow
-        command stow -R --verbose --target="$target_dir" --dir="$stow_dir" "$@"
+        # Pass all provided arguments to stow. '--' is critical here too.
+        command stow -R --verbose --target="$target_dir" --dir="$stow_dir" -- "$@"
     fi
 }
 
