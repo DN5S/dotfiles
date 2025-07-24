@@ -56,7 +56,8 @@ fi
 # Install uv (The extremely fast Python installer and resolver)
 if ! command -v uv &> /dev/null; then
   echo "uv not found. Installing from the official setup script..."
-  curl -LsSf https://astral.sh/uv/install.sh | sh
+  # INSTALLER_NO_MODIFY_PATH=1 is used to prevent the installer from modifying the PATH variable.
+  curl -LsSf https://astral.sh/uv/install.sh | env INSTALLER_NO_MODIFY_PATH=1 sh
 else
   echo "uv is already installed."
 fi
