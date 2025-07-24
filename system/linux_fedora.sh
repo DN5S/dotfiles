@@ -44,12 +44,11 @@ fi
 
 # Install Atuin
 # As this is a more reliable method than checking for the command in the PATH.
-ATUIN_INSTALL_DIR="$HOME/.atuin/bin"
-if [ ! -d "$ATUIN_INSTALL_DIR" ]; then
-  echo "Atuin not found in $HOME/.atuin. Installing from official script..."
-  # The script should be run as the user, not sudo, to install in the user's home directory.
-if [ "$SHELL" = "$ZSH_PATH" ]; then
-  echo "Zsh is already the default shell."
+ATUIN_BINARY="$HOME/.atuin/bin/atuin"
+if [ ! -f "$ATUIN_BINARY" ]; then
+  echo "Atuin not found. Installing from the official setup script..."
+  # Use the official, recommended installation method.
+  curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 else
   echo "Atuin is already installed."
 fi
