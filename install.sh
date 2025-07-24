@@ -29,12 +29,38 @@ fi
 
 # Create the .zsh_plugins.txt file if it doesn't exist
 echo "Creating symbolic links with Stow..."
-for dir in "$DOTFILES_DIR"/config/*; do
-    if [ -d "$dir" ]; then
-        stow_pkg=$(basename "$dir")
-        echo "Stowing $stow_pkg..."
-        stow -R --verbose --target="$HOME" --dir="$DOTFILES_DIR/config" "$stow_pkg"
+STOW_DIR="$DOTFILES_DIR/config"
+TARGET_DIR="$HOME"
+STOW_PACKAGES=(
+    p10k
+    zsh
+    zsh-conf
+)
+
+for pkg in "${STOW_PACKAGES[@]}"; do
+    echo "Processing package: $pkg..."
+    find "$STOW_DIR/$pkg" -mindepth 1 -maxdepth 1 -exec basename {} \; | while read -r item; do
+        target_path="$TARGET_DIR/$item"
+        if [ -e "$target_path" ] && [ ! -L "$target_path" ]; then
+            echo "-> Conflict detected: '$target_path' exists and is not a symlink."
+            backup_path="${target_path}.bak.$(date +%Y%m%d_%H%M%S)"
+            echo "Backing up to '$backup_path'"
+            if mv "$target_path" "$backup_path"; then
+                echo "Backup successful."
+            else
+                echo "ERROR: Failed to back up '$target_path'. Aborting for this package." >&2
+                continue 2
+            fi
+        fi
+    done
+
+    echo "Stowing $pkg..."
+    if stow -R --verbose --target="$TARGET_DIR" --dir="$STOW_DIR" -- "$pkg"; then
+        echo "Successfully stowed $pkg."
+    else
+        echo "ERROR: Failed to stow $pkg." >&2
     fi
+    echo ""
 done
 
 echo ""
