@@ -38,3 +38,14 @@ if ! command -v claude-code &> /dev/null; then
 else
     echo "Claude Code is already installed."
 fi
+
+# Setup MCP servers for Claude Code
+if command -v claude-code &> /dev/null; then
+    echo "Setting up MCP servers for Claude Code..."
+    DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+    if [ -f "$DOTFILES_DIR/config/claude/setup-mcp.sh" ]; then
+        bash "$DOTFILES_DIR/config/claude/setup-mcp.sh"
+    else
+        echo "Warning: MCP setup script not found. Skipping MCP configuration."
+    fi
+fi

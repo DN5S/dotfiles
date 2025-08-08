@@ -59,6 +59,7 @@ STOW_PACKAGES=(
     zsh
     zsh-conf
     git
+    claude
 )
 
 for pkg in "${STOW_PACKAGES[@]}"; do
