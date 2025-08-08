@@ -21,3 +21,20 @@ else
         exit 1
     fi
 fi
+
+# Install Claude Code if not already installed
+echo "Checking for Claude Code installation..."
+if ! command -v claude-code &> /dev/null; then
+    echo "Claude Code not found. Installing..."
+    if command -v npm &> /dev/null; then
+        if npm install -g @anthropic-ai/claude-code; then
+            echo "Claude Code installed successfully."
+        else
+            echo "Warning: Failed to install Claude Code. You can install it manually with: npm install -g @anthropic-ai/claude-code" >&2
+        fi
+    else
+        echo "Warning: npm not found. Please install Node.js/npm first, then run: npm install -g @anthropic-ai/claude-code" >&2
+    fi
+else
+    echo "Claude Code is already installed."
+fi
